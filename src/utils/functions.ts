@@ -70,7 +70,8 @@ export function toggleCartEmptyListState() {
   }
 }
 
-function addQuoteItemsToHiddenInput(item: object) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function addQuoteItemsToHiddenInput(item: any) {
   const hiddenInput = document.createElement('input');
   document.getElementById('wf-form-Request-Quote')?.appendChild(hiddenInput);
   hiddenInput.name = 'Item: ' + item['slug'];
