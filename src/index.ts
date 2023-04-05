@@ -1,7 +1,21 @@
-import { greetUser } from '$utils/greet';
+import {
+  addClickEventListenersToAddToQuoteButtons,
+  addClickEventListenerToNavCartClose,
+  addClickEventListenerToNavCartOpen,
+  onRequestFormSubmit,
+  setUpCartFromLocalStorage,
+} from './utils/functions';
 
 window.Webflow ||= [];
-window.Webflow.push(() => {
-  const name = 'John Doe';
-  greetUser(name);
+window.Webflow.push(async () => {
+  // all cart items are stored in local storage,
+  // so get stored items and place in cart div.
+  setUpCartFromLocalStorage();
+  // add click event handler for nav cart open link.
+  addClickEventListenerToNavCartOpen();
+  // add click event handler for nav cart close link.
+  addClickEventListenerToNavCartClose();
+  // add event handlers for each add to quote button the page.
+  addClickEventListenersToAddToQuoteButtons();
+  onRequestFormSubmit();
 });
