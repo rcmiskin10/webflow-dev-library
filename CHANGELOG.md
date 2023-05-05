@@ -1,5 +1,13 @@
 # webflow-dev-library
 
+## 5.0.0
+
+### Major Changes
+
+- ef91f2a: testing
+- 5604ece: changing classes
+- e9bff6e: testing
+
 ## 3.0.0
 
 ### Major Changes
