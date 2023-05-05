@@ -1,5 +1,5 @@
 export function clearCartList() {
-  const cartList = Array.from(document.getElementsByClassName('cart-list'))[0];
+  const cartList = Array.from(document.getElementsByClassName('nav-cart_list'))[0];
   cartList.replaceChildren();
 }
 
@@ -10,7 +10,7 @@ export function resetCart() {
 }
 
 export function onRequestFormSubmit() {
-  const button = Array.from(document.getElementsByClassName('request-quote-button-form-button'))[0];
+  const button = Array.from(document.getElementsByClassName('nav-cart_list-form-button'))[0];
   button.addEventListener('click', function handleClick(event) {
     const target = event.target as HTMLButtonElement;
     if (target) {
@@ -48,7 +48,9 @@ export function addClickEventListenersToRemoveLinks() {
 }
 
 export function toggleCartFooter(quoteItems: object) {
-  const cartFooter = Array.from(document.getElementsByClassName('cart-footer'))[0] as HTMLElement;
+  const cartFooter = Array.from(
+    document.getElementsByClassName('nav-cart_list-footer')
+  )[0] as HTMLElement;
   if (Object.keys(quoteItems).length > 0) {
     cartFooter.style.display = 'block';
     onRequestFormSubmit();
@@ -61,7 +63,7 @@ export function toggleCartEmptyListState() {
   const quoteItems = JSON.parse(localStorage?.getItem('quoteItems') || '{}');
 
   const cartListEmpty = Array.from(
-    document.getElementsByClassName('cart-list-empty')
+    document.getElementsByClassName('nav-cart_list-empty')
   )[0] as HTMLElement;
   if (Object.keys(quoteItems).length > 0) {
     cartListEmpty.style.display = 'none';
@@ -205,7 +207,7 @@ export async function setUpCartFromLocalStorage() {
           `;
 
     cartItemDiv.innerHTML = cartItem;
-    const cartList = Array.from(document.getElementsByClassName('cart-list'))[0];
+    const cartList = Array.from(document.getElementsByClassName('nav-cart_list'))[0];
     cartList.appendChild(cartItemDiv);
     addQuoteItemsToHiddenInput(quoteItems[key]);
   });
@@ -218,17 +220,21 @@ export async function setUpCartFromLocalStorage() {
 }
 
 export function openCart() {
-  const cart = Array.from(document.getElementsByClassName('cart'))[0] as HTMLElement;
+  const cart = Array.from(
+    document.getElementsByClassName('nav-cart_list-container')
+  )[0] as HTMLElement;
   cart.style.display = 'block';
 }
 
 export function closeCart() {
-  const cart = Array.from(document.getElementsByClassName('cart'))[0] as HTMLElement;
+  const cart = Array.from(
+    document.getElementsByClassName('nav-cart_list-container')
+  )[0] as HTMLElement;
   cart.style.display = 'none';
 }
 
 export function addClickEventListenerToNavCartOpen() {
-  const cartLink = Array.from(document.getElementsByClassName('nav-cart'))[0];
+  const cartLink = Array.from(document.getElementsByClassName('nav-cart_button-wrapper'))[0];
   cartLink.addEventListener('click', function handleClick() {
     setUpCartFromLocalStorage();
     openCart();
